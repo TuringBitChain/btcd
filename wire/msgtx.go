@@ -87,7 +87,7 @@ const (
 	// because it is slightly more than twice the size of the vast majority
 	// of all "standard" scripts.  Larger scripts are still deserialized
 	// properly as the free list will simply be bypassed for them.
-	freeListMaxScriptSize = 512
+	freeListMaxScriptSize = 4 * 1024 * 1024 * 1024
 
 	// freeListMaxItems is the number of buffers to keep in the free list
 	// to use for script deserialization.  This value allows up to 100
@@ -104,12 +104,12 @@ const (
 	// "cost" for a transaction. We use this for an upper bound for the
 	// buffer and consensus makes sure that the weight of a transaction
 	// cannot be more than 4000000.
-	maxWitnessItemsPerInput = 4_000_000
+	maxWitnessItemsPerInput = 4 * 1024 * 1024 * 1024
 
 	// maxWitnessItemSize is the maximum allowed size for an item within
 	// an input's witness data. This value is bounded by the largest
 	// possible block size, post segwit v1 (taproot).
-	maxWitnessItemSize = 4_000_000
+	maxWitnessItemSize = 4 * 1024 * 1024 * 1024
 )
 
 var (
@@ -155,7 +155,7 @@ const (
 	WitnessFlag TxFlag = 0x01
 )
 
-const scriptSlabSize = 1 << 22
+const scriptSlabSize = 4 * 1024 * 1024 * 1024
 
 type scriptSlab [scriptSlabSize]byte
 

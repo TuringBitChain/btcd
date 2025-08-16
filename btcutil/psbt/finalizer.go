@@ -541,7 +541,7 @@ func finalizeTaprootInput(p *Packet, inIndex int) error {
 
 		// If there are multiple script spend signatures, we assume they
 		// are from multiple signing participants for the same leaf
-		// script that uses OP_CHECKSIGADD for multi-sig. Signing
+		// script that uses OP_PUSH_META for multi-sig. Signing
 		// multiple possible execution paths at the same time is
 		// currently not supported by this library.
 		targetLeafHash := pInput.TaprootScriptSpendSig[0].LeafHash

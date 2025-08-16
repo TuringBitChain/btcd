@@ -341,7 +341,7 @@ func isOpcodeDisabled(opcode byte) bool {
 	switch opcode {
 	case OP_CAT:
 		return true
-	case OP_SUBSTR:
+	case OP_SPLIT:
 		return true
 	case OP_LEFT:
 		return true

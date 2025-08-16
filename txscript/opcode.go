@@ -166,7 +166,7 @@ const (
 	OP_SWAP                = 0x7c // 124
 	OP_TUCK                = 0x7d // 125
 	OP_CAT                 = 0x7e // 126
-	OP_SUBSTR              = 0x7f // 127
+	OP_SPLIT              = 0x7f // 127
 	OP_LEFT                = 0x80 // 128
 	OP_RIGHT               = 0x81 // 129
 	OP_SIZE                = 0x82 // 130
@@ -446,7 +446,7 @@ var opcodeArray = [256]opcode{
 
 	// Splice opcodes.
 	OP_CAT:    {OP_CAT, "OP_CAT", 1, opcodeDisabled},
-	OP_SUBSTR: {OP_SUBSTR, "OP_SUBSTR", 1, opcodeDisabled},
+	OP_SPLIT: {OP_SPLIT, "OP_SPLIT", 1, opcodeDisabled},
 	OP_LEFT:   {OP_LEFT, "OP_LEFT", 1, opcodeDisabled},
 	OP_RIGHT:  {OP_RIGHT, "OP_RIGHT", 1, opcodeDisabled},
 	OP_SIZE:   {OP_SIZE, "OP_SIZE", 1, opcodeSize},
@@ -620,7 +620,7 @@ var successOpcodes = map[byte]struct{}{
 	OP_RESERVED:     {}, // 80
 	OP_VER:          {}, // 98
 	OP_CAT:          {}, // 126
-	OP_SUBSTR:       {}, // 127
+	OP_SPLIT:       {}, // 127
 	OP_LEFT:         {}, // 128
 	OP_RIGHT:        {}, // 129
 	OP_INVERT:       {}, // 131

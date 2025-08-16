@@ -169,8 +169,5 @@ func CalculateTxID(rawTxData []byte, tx *Transaction) []byte {
 	firstHash := sha256.Sum256(finalSerialization)
 	finalHash := sha256.Sum256(firstHash[:])
 
-	// 反转回大端序
-	reversedFinalHash := reverseBytes(finalHash[:])
-
-	return reversedFinalHash
+	return finalHash[:]
 }

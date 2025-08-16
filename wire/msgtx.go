@@ -380,6 +380,21 @@ func (msg *MsgTx) AddTxOut(to *TxOut) {
 
 // TxHash generates the Hash for the transaction.
 func (msg *MsgTx) TxHash() chainhash.Hash {
+	// 对于版本10的交易, 使用自定义的三层哈希逻辑
+	if msg.Version == 10 {
+		// 1. 将wire.MsgTx转换为通用Transaction结构
+		commonTx := ConvertWireMsgTxToCommonTransaction(msg)
+
+		// 2. 计算txid
+		txidBytes := CalculateTxID(nil, commonTx)
+
+		// 3. 转换为chainhash.Hash
+		var hash chainhash.Hash
+		copy(hash[:], txidBytes)
+		return hash
+	}
+
+	// 对于非版本10的交易, 使用标准的txid计算方法
 	return chainhash.DoubleHashRaw(msg.SerializeNoWitness)
 }
 

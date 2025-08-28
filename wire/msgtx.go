@@ -154,8 +154,8 @@ const (
 	// serialized transaction with witnesses from a legacy one.
 	WitnessFlag TxFlag = 0x01
 )
-
-const scriptSlabSize = 4 * 1024 * 1024 * 1024
+// 4G // 4M // 20M
+const scriptSlabSize = 64 * 1024 * 1024
 
 type scriptSlab [scriptSlabSize]byte
 
